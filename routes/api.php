@@ -4,10 +4,9 @@ use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/todos', [TodoController::class, 'index']);
-Route::post('/todos', [TodoController::class, 'store']);
+Route::post('/todos', [TodoController::class, 'create']);
 Route::patch('/todos/{todo}/toggle', [TodoController::class, 'toggleComplete']);
-Route::patch('/todos/{todo}', [TodoController::class, 'update']);
-Route::delete('/todos/{todo}', [TodoController::class, 'destroy']);
-Route::get('/todos-view', function () {
-    return view('todo'); // Make sure todo.blade.php is inside resources/views
-});
+Route::put('/todos/{todo}', [TodoController::class, 'update']);
+Route::delete('/todos/{todo}', [TodoController::class, 'delete']);
+
+// add sanctum middleware to all routes
